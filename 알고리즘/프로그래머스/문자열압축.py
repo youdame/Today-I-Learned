@@ -1,3 +1,4 @@
+
 def get_shortened_length(target, unit_length):
     length = len(target)  # 문자열의 전체 길이
     new_length = length  # 압축 후의 새로운 길이
@@ -20,7 +21,11 @@ def get_shortened_length(target, unit_length):
             # 압축 가능한 경우
             if count > 1:
                 # 압축된 부분의 길이를 반영하고, 반복 횟수에 따른 길이를 줄임
+
+                # 만약 count가 10이라면, 2자리를 차지함
                 new_length += len(str(count))
+
+                # 압축됨으로 인해 줄어든 길이 반영
                 new_length -= (count - 1) * unit_length
 
             # 다음 부분 문자열로 이동하고 반복 횟수 초기화
@@ -45,3 +50,13 @@ def solution(given_str):
     for unit_length in range(1, len(given_str) // 2 + 1):
         answer = min(answer, get_shortened_length(given_str, unit_length))
     return answer
+
+
+if __name__ == "__main__":
+    # input.txt 파일을 읽어옴
+    with open('input.txt', 'r') as f:
+        given_str = f.readline().strip()
+
+    # solution 함수 호출하여 결과 출력
+    result = solution(given_str)
+    print(result)

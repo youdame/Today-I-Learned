@@ -13,11 +13,6 @@ def solution(text):
     part1 += (value // 2) * key 
     return part1 + part2 + part1[::-1]
 
-     
-     
-
-
-
 
 if __name__ == "__main__":
     # 파일에서 입력값 읽어오기
