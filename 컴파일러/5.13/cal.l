@@ -1,17 +1,28 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-#include "cal.tab.h" 
-int yylex();
+#include "cal.tab.h" // bison에서 생성된 헤더 파일 포함
+#define YY_DECL int yylex(void) // yylex 함수 선언 추가
+enum tnumber { TEOF, TIDEN, TNUM, TASSIGN, TADD, TSEMI, TDOT, TBEGIN, TEND, TERROR };
 %}
+
+letter	[a-zA-Z_]
+digit	[0-9]
+
 %%
-[a-z]* { return NAME; }
-[0-9]+ { yylval = atoi(yytext); return NUMBER; } // NUMBER 패턴 변경
-[\t] ;
-\n return 0; // 큰 따옴표를 작은 따옴표로 변경
-. return yytext[0];
+begin				return(TBEGIN);
+end					return(TEND);
+{letter}({letter}|{digit})*	return(TIDEN);
+":="				return(TASSIGN);
+"+"				return(TADD);
+{digit}+			return(TNUM);
+";"				return(TSEMI);
+\.				return(TDOT);
+[ \t\n]				;
+.				return(TERROR);
 %%
+
 int yywrap()
 {
-return 1;
+    return 1;
 }
