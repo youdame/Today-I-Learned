@@ -44,23 +44,25 @@
      TCONST = 260,
      TELSE = 261,
      TIF = 262,
-     TINT = 263,
-     TRETURN = 264,
-     TVOID = 265,
-     TWHILE = 266,
-     TADD_ASSIGN = 267,
-     TSUB_ASSIGN = 268,
-     TMUL_ASSIGN = 269,
-     TDIV_ASSIGN = 270,
-     TMOD_ASSIGN = 271,
-     TOR = 272,
-     TAND = 273,
-     TEQUAL = 274,
-     TNOTEQUAL = 275,
-     TGREATE = 276,
-     TLESSE = 277,
-     TINC = 278,
-     TDEC = 279
+     TEIF = 263,
+     TINT = 264,
+     TRETURN = 265,
+     TVOID = 266,
+     TWHILE = 267,
+     TADD_ASSIGN = 268,
+     TSUB_ASSIGN = 269,
+     TMUL_ASSIGN = 270,
+     TDIV_ASSIGN = 271,
+     TMOD_ASSIGN = 272,
+     TOR = 273,
+     TAND = 274,
+     TEQUAL = 275,
+     TNOTEQUAL = 276,
+     TGREATE = 277,
+     TLESSE = 278,
+     TINC = 279,
+     TDEC = 280,
+     LOWER_THAN_ELSE = 281
    };
 #endif
 /* Tokens.  */
@@ -69,23 +71,25 @@
 #define TCONST 260
 #define TELSE 261
 #define TIF 262
-#define TINT 263
-#define TRETURN 264
-#define TVOID 265
-#define TWHILE 266
-#define TADD_ASSIGN 267
-#define TSUB_ASSIGN 268
-#define TMUL_ASSIGN 269
-#define TDIV_ASSIGN 270
-#define TMOD_ASSIGN 271
-#define TOR 272
-#define TAND 273
-#define TEQUAL 274
-#define TNOTEQUAL 275
-#define TGREATE 276
-#define TLESSE 277
-#define TINC 278
-#define TDEC 279
+#define TEIF 263
+#define TINT 264
+#define TRETURN 265
+#define TVOID 266
+#define TWHILE 267
+#define TADD_ASSIGN 268
+#define TSUB_ASSIGN 269
+#define TMUL_ASSIGN 270
+#define TDIV_ASSIGN 271
+#define TMOD_ASSIGN 272
+#define TOR 273
+#define TAND 274
+#define TEQUAL 275
+#define TNOTEQUAL 276
+#define TGREATE 277
+#define TLESSE 278
+#define TINC 279
+#define TDEC 280
+#define LOWER_THAN_ELSE 281
 
 
 

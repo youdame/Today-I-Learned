@@ -1,7 +1,7 @@
 %{
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
-#include "cal.tab.h" // bison에서 생성된 헤더 파일 포함
+#include "tn.h" // bison에서 생성된 헤더 파일 포함
 #define YY_DECL int yylex(void) // yylex 함수 선언 추가
 enum tnumber { TEOF, TIDEN, TNUM, TASSIGN, TADD, TSEMI, TDOT, TBEGIN, TEND, TERROR };
 %}

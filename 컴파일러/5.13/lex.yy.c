@@ -452,11 +452,11 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "cal.l"
-#line 2 "cal.l"
-#include <stdio.h>
+#line 1 "scanner.l"
+#line 2 "scanner.l"
+#include <stdio.h> 
 #include <stdlib.h>
-#include "cal.tab.h" // bison에서 생성된 헤더 파일 포함
+#include "tn.h" // bison에서 생성된 헤더 파일 포함
 #define YY_DECL int yylex(void) // yylex 함수 선언 추가
 enum tnumber { TEOF, TIDEN, TNUM, TASSIGN, TADD, TSEMI, TDOT, TBEGIN, TEND, TERROR };
 #line 462 "lex.yy.c"
@@ -677,7 +677,7 @@ YY_DECL
 		}
 
 	{
-#line 12 "cal.l"
+#line 12 "scanner.l"
 
 #line 682 "lex.yy.c"
 
@@ -738,58 +738,58 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "cal.l"
+#line 13 "scanner.l"
 return(TBEGIN);
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "cal.l"
+#line 14 "scanner.l"
 return(TEND);
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 15 "cal.l"
+#line 15 "scanner.l"
 return(TIDEN);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 16 "cal.l"
+#line 16 "scanner.l"
 return(TASSIGN);
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 17 "cal.l"
+#line 17 "scanner.l"
 return(TADD);
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "cal.l"
+#line 18 "scanner.l"
 return(TNUM);
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 19 "cal.l"
+#line 19 "scanner.l"
 return(TSEMI);
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 20 "cal.l"
+#line 20 "scanner.l"
 return(TDOT);
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 21 "cal.l"
+#line 21 "scanner.l"
 ;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "cal.l"
+#line 22 "scanner.l"
 return(TERROR);
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 23 "cal.l"
+#line 23 "scanner.l"
 ECHO;
 	YY_BREAK
 #line 795 "lex.yy.c"
@@ -1797,7 +1797,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 23 "cal.l"
+#line 23 "scanner.l"
 
 
 int yywrap()

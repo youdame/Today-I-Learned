@@ -1,10 +1,11 @@
 %{
     /* yacc source for Mini C */ 
     void semantic(int);
+    void reportError(const char* message);
     void yyerror(const char *s);  // yyerror 함수 선언 추가
     int yylex(void);              // yylex 함수 선언 추가
 %}
-%token TIDENT TNUMBER TCONST TELSE TIF TINT TRETURN TVOID TWHILE 
+%token TIDENT TNUMBER TCONST TELSE TIF TEIF TINT TRETURN TVOID TWHILE 
 %token TADD_ASSIGN TSUB_ASSIGN TMUL_ASSIGN TDIV_ASSIGN TMOD_ASSIGN
 %token TOR TAND TEQUAL TNOTEQUAL TGREATE TLESSE TINC TDEC
 
@@ -88,8 +89,12 @@ expression_st : opt_expression ';' { semantic(46); };
 opt_expression : expression { semantic(47); }
                | /* empty */ { semantic(48); };
 
-if_st : TIF '(' expression ')' statement %prec LOWER_THAN_ELSE {semantic(49);};
-      | TIF '(' expression ')' statement TELSE statement { semantic(50); };
+/* if_st : TIF '(' expression ')' statement %prec LOWER_THAN_ELSE {semantic(49);};
+      | TIF '(' expression ')' statement TELSE statement { semantic(50); }; */ 
+
+if_st : TIF '(' expression ')' statement TEIF {semantic(49);};
+      | TIF '(' expression ')' statement TELSE statement TEIF { semantic(50); };
+      | TIF '(' error ')' {reportError("error message");}
 
 while_st : TWHILE '(' expression ')' statement { semantic(51); };
 
@@ -162,6 +167,9 @@ void yyerror(const char *s)  // yyerror 함수 정의 수정
 void semantic(int n)
 {
     printf("reduced rule number = %d\n", n);
+}
+void reportError(const char* message) {
+    printf("%s", message);
 }
 int main()
 {
