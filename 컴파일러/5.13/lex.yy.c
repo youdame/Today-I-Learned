@@ -454,13 +454,12 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "scanner.l"
 #line 2 "scanner.l"
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 #include "tn.h" // bison에서 생성된 헤더 파일 포함
 #define YY_DECL int yylex(void) // yylex 함수 선언 추가
-enum tnumber { TEOF, TIDEN, TNUM, TASSIGN, TADD, TSEMI, TDOT, TBEGIN, TEND, TERROR };
+#line 461 "lex.yy.c"
 #line 462 "lex.yy.c"
-#line 463 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -677,9 +676,9 @@ YY_DECL
 		}
 
 	{
-#line 12 "scanner.l"
+#line 11 "scanner.l"
 
-#line 682 "lex.yy.c"
+#line 681 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -738,61 +737,61 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 13 "scanner.l"
+#line 12 "scanner.l"
 return(TBEGIN);
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "scanner.l"
+#line 13 "scanner.l"
 return(TEND);
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 15 "scanner.l"
-return(TIDEN);
+#line 14 "scanner.l"
+return(TIDENT);
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 16 "scanner.l"
+#line 15 "scanner.l"
 return(TASSIGN);
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 17 "scanner.l"
+#line 16 "scanner.l"
 return(TADD);
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 18 "scanner.l"
+#line 17 "scanner.l"
 return(TNUM);
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 19 "scanner.l"
+#line 18 "scanner.l"
 return(TSEMI);
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 20 "scanner.l"
+#line 19 "scanner.l"
 return(TDOT);
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 21 "scanner.l"
+#line 20 "scanner.l"
 ;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 22 "scanner.l"
+#line 21 "scanner.l"
 return(TERROR);
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 23 "scanner.l"
+#line 22 "scanner.l"
 ECHO;
 	YY_BREAK
-#line 795 "lex.yy.c"
+#line 794 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1797,11 +1796,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 23 "scanner.l"
+#line 22 "scanner.l"
 
 
 int yywrap()
 {
     return 1;
 }
-

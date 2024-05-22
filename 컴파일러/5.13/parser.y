@@ -1,13 +1,18 @@
 %{
     /* yacc source for Mini C */ 
+    #include <ctype.h>
+    #include <stdlib.h>
+    #include <stdio.h>
     void semantic(int);
     void reportError(const char* message);
     void yyerror(const char *s);  // yyerror 함수 선언 추가
-    int yylex(void);              // yylex 함수 선언 추가
+    extern int yylex(void);              // yylex 함수 선언 추가
+
 %}
-%token TIDENT TNUMBER TCONST TELSE TIF TEIF TINT TRETURN TVOID TWHILE 
+%token TIDENT TNUMBER TCONST TELSE TIF TINT TRETURN TVOID TWHILE 
 %token TADD_ASSIGN TSUB_ASSIGN TMUL_ASSIGN TDIV_ASSIGN TMOD_ASSIGN
 %token TOR TAND TEQUAL TNOTEQUAL TGREATE TLESSE TINC TDEC
+%token TBEGIN TEND TASSIGN TADD TNUM TSEMI TDOT TERROR
 
 %nonassoc LOWER_THAN_ELSE
 %nonassoc TELSE
@@ -85,16 +90,15 @@ statement : compound_st { semantic(41); }
           | return_st { semantic(45); };
 
 expression_st : opt_expression ';' { semantic(46); };
+                | opt_expression error  {reportError("error message");} // 세미콜론이 없는 경우 에러 표시 예시
+                ;
 
 opt_expression : expression { semantic(47); }
                | /* empty */ { semantic(48); };
 
-/* if_st : TIF '(' expression ')' statement %prec LOWER_THAN_ELSE {semantic(49);};
-      | TIF '(' expression ')' statement TELSE statement { semantic(50); }; */ 
-
-if_st : TIF '(' expression ')' statement TEIF {semantic(49);};
-      | TIF '(' expression ')' statement TELSE statement TEIF { semantic(50); };
-      | TIF '(' error ')' {reportError("error message");}
+if_st : TIF '(' expression ')' statement %prec LOWER_THAN_ELSE {semantic(49);};
+      | TIF '(' expression ')' statement TELSE statement { semantic(50); };
+      | TIF '(' error ')' { reportError("error message");} //과제에서 조건이 없는 경우 에러처리 예시
 
 while_st : TWHILE '(' expression ')' statement { semantic(51); };
 
@@ -159,7 +163,6 @@ primary_exp : TIDENT { semantic(95); }
             | '(' expression ')' { semantic(97); };
 
 %%
-#include "lex.yy.c"  /* include "lex.yy.c" */
 void yyerror(const char *s)  // yyerror 함수 정의 수정
 {
     printf("%s\n", s);

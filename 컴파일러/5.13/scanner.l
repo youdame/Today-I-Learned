@@ -1,9 +1,8 @@
 %{
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 #include "tn.h" // bison에서 생성된 헤더 파일 포함
 #define YY_DECL int yylex(void) // yylex 함수 선언 추가
-enum tnumber { TEOF, TIDEN, TNUM, TASSIGN, TADD, TSEMI, TDOT, TBEGIN, TEND, TERROR };
 %}
 
 letter	[a-zA-Z_]
@@ -12,7 +11,7 @@ digit	[0-9]
 %%
 begin				return(TBEGIN);
 end					return(TEND);
-{letter}({letter}|{digit})*	return(TIDEN);
+{letter}({letter}|{digit})*	return(TIDENT);
 ":="				return(TASSIGN);
 "+"				return(TADD);
 {digit}+			return(TNUM);
