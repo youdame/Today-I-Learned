@@ -64,85 +64,85 @@ init_declarator : declarator { semantic(31); };
 
 declarator : TIDENT { semantic(33); }
            | TIDENT '[' opt_number ']' { semantic(34); }
-           | TIDENT '(' opt_number ')' { semantic(35); };
 
-opt_number : TNUMBER { semantic(36); }
-           | /* empty */ { semantic(37); };
+opt_number : TNUMBER { semantic(35); }
+           | /* empty */ { semantic(36); };
 
-opt_stat_list : statement_list { semantic(38); }
-              | /* empty */ { semantic(39); };
+opt_stat_list : statement_list { semantic(37); }
+              | /* empty */ { semantic(38); };
 
-statement_list : statement { semantic(40); }
-               | statement_list statement { semantic(41); };
+statement_list : statement { semantic(39); }
+               | statement_list statement { semantic(40); };
 
-statement : compound_st { semantic(42); }
-          | expression_st { semantic(43); }
-          | if_st { semantic(44); }
-          | while_st { semantic(45); }
-          | return_st { semantic(46); };
+statement : compound_st { semantic(41); }
+          | expression_st { semantic(42); }
+          | if_st { semantic(43); }
+          | while_st { semantic(44); }
+          | return_st { semantic(45); };
 
-expression_st : opt_expression ';' { semantic(47); };
+expression_st : opt_expression ';' { semantic(46); };
 
-opt_expression : expression { semantic(48); }
-               | /* empty */ { semantic(49); };
+opt_expression : expression { semantic(47); }
+               | /* empty */ { semantic(48); };
 
-if_st : TIF '(' expression ')' statement { semantic(50); }
-      | TIF '(' expression ')' statement TELSE statement { semantic(51); };
+if_st : TIF '(' expression ')' statement { semantic(49); }
+      | TIF '(' expression ')' statement TELSE statement { semantic(50); };
 
-while_st : TWHILE '(' expression ')' statement { semantic(52); };
+while_st : TWHILE '(' expression ')' statement { semantic(51); };
 
-return_st : TRETURN opt_expression ';' { semantic(53); };
+return_st : TRETURN opt_expression ';' { semantic(52); };
 
-expression : assignment_exp { semantic(54); };
+expression : assignment_exp { semantic(53); };
 
-assignment_exp : logical_or_exp { semantic(55); }
-               | unary_exp '=' assignment_exp { semantic(56); }
-               | unary_exp TADD_ASSIGN assignment_exp { semantic(57); }
-               | unary_exp TSUB_ASSIGN assignment_exp { semantic(58); }
-               | unary_exp TMUL_ASSIGN assignment_exp { semantic(59); }
-               | unary_exp TDIV_ASSIGN assignment_exp { semantic(60); }
-               | unary_exp TMOD_ASSIGN assignment_exp { semantic(61); };
+assignment_exp : logical_or_exp { semantic(54); }
+               | unary_exp '=' assignment_exp { semantic(55); }
+               | unary_exp TADD_ASSIGN assignment_exp { semantic(56); }
+               | unary_exp TSUB_ASSIGN assignment_exp { semantic(57); }
+               | unary_exp TMUL_ASSIGN assignment_exp { semantic(58); }
+               | unary_exp TDIV_ASSIGN assignment_exp { semantic(59); }
+               | unary_exp TMOD_ASSIGN assignment_exp { semantic(60); };
 
-logical_or_exp : logical_and_exp { semantic(62); }
-               | logical_or_exp TOR logical_and_exp { semantic(63); };
+logical_or_exp : logical_and_exp { semantic(61); }
+               | logical_or_exp TOR logical_and_exp { semantic(62); };
 
-logical_and_exp : equality_exp { semantic(64); }
-                | logical_and_exp TAND equality_exp { semantic(65); };
+logical_and_exp : equality_exp { semantic(63); }
+                | logical_and_exp TAND equality_exp { semantic(64); };
 
-equality_exp : relational_exp { semantic(66); }
-             | equality_exp TEQUAL relational_exp { semantic(67); }
-             | equality_exp TNOTEQUAL relational_exp { semantic(68); };
+equality_exp : relational_exp { semantic(65); }
+             | equality_exp TEQUAL relational_exp { semantic(66); }
+             | equality_exp TNOTEQUAL relational_exp { semantic(67); };
 
-relational_exp : additive_exp { semantic(69); }
-               | relational_exp '>' additive_exp { semantic(70); }
-               | relational_exp '<' additive_exp { semantic(71); }
-               | relational_exp TGREATE additive_exp { semantic(72); }
-               | relational_exp TLESSE additive_exp { semantic(73); };
+relational_exp : additive_exp { semantic(68); }
+               | relational_exp '>' additive_exp { semantic(69); }
+               | relational_exp '<' additive_exp { semantic(70); }
+               | relational_exp TGREATE additive_exp { semantic(71); }
+               | relational_exp TLESSE additive_exp { semantic(72); };
 
-additive_exp : multiplicative_exp { semantic(74); }
-             | additive_exp '+' multiplicative_exp { semantic(75); }
-             | additive_exp '-' multiplicative_exp { semantic(76); };
+additive_exp : multiplicative_exp { semantic(73); }
+             | additive_exp '+' multiplicative_exp { semantic(74); }
+             | additive_exp '-' multiplicative_exp { semantic(75); };
 
-multiplicative_exp : unary_exp { semantic(77); }
-                   | multiplicative_exp '*' unary_exp { semantic(78); }
-                   | multiplicative_exp '/' unary_exp { semantic(79); }
-                   | multiplicative_exp '%' unary_exp { semantic(80); };
+multiplicative_exp : unary_exp { semantic(76); }
+                   | multiplicative_exp '*' unary_exp { semantic(77); }
+                   | multiplicative_exp '/' unary_exp { semantic(78); }
+                   | multiplicative_exp '%' unary_exp { semantic(79); };
 
-unary_exp : postfix_exp { semantic(81); }
-          | '-' unary_exp { semantic(82); }
-          | '!' unary_exp { semantic(83); }
-          | TINC unary_exp { semantic(84); }
-          | TDEC unary_exp { semantic(85); };
+unary_exp : postfix_exp { semantic(80); }
+          | '-' unary_exp { semantic(81); }
+          | '!' unary_exp { semantic(82); }
+          | TINC unary_exp { semantic(83); }
+          | TDEC unary_exp { semantic(84); };
 
-postfix_exp : primary_exp { semantic(86); }
-            | postfix_exp '[' expression ']' { semantic(87); }
-            | postfix_exp '(' opt_actual_param ')' { semantic(88); }
-            | postfix_exp TINC { semantic(89); }
-            | postfix_exp TDEC { semantic(90); };
+postfix_exp : primary_exp { semantic(85); }
+            | postfix_exp '[' expression ']' { semantic(86); }
+            | postfix_exp '(' opt_actual_param ')' { semantic(87); }
+            | postfix_exp TINC { semantic(88); }
+            | postfix_exp TDEC { semantic(89); };
 
-opt_actual_param : actual_param_list { semantic(91); }
-                 | /* empty */ { semantic(92); };
+opt_actual_param : actual_param { semantic(90); }
+                 | /* empty */ { semantic(91); };
 
+actual_param : actual_param_list { semantic(92); }
 actual_param_list : assignment_exp { semantic(93); }
                   | actual_param_list ',' assignment_exp { semantic(94); };
 
