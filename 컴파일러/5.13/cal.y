@@ -8,6 +8,9 @@
 %token TADD_ASSIGN TSUB_ASSIGN TMUL_ASSIGN TDIV_ASSIGN TMOD_ASSIGN
 %token TOR TAND TEQUAL TNOTEQUAL TGREATE TLESSE TINC TDEC
 
+%nonassoc LOWER_THAN_ELSE
+%nonassoc TELSE
+
 %%
 mini_c : translation_unit { semantic(1); };
 
@@ -85,7 +88,7 @@ expression_st : opt_expression ';' { semantic(46); };
 opt_expression : expression { semantic(47); }
                | /* empty */ { semantic(48); };
 
-if_st : TIF '(' expression ')' statement { semantic(49); }
+if_st : TIF '(' expression ')' statement %prec LOWER_THAN_ELSE {semantic(49);};
       | TIF '(' expression ')' statement TELSE statement { semantic(50); };
 
 while_st : TWHILE '(' expression ')' statement { semantic(51); };
