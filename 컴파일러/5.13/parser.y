@@ -7,6 +7,7 @@
     void reportError(const char* message);
     void yyerror(const char *s);  // yyerror 함수 선언 추가
     extern int yylex(void);              // yylex 함수 선언 추가
+    extern int yylineno;
 
 %}
 %token TIDENT TNUMBER TCONST TELSE TIF TINT TRETURN TVOID TWHILE 
@@ -163,10 +164,10 @@ primary_exp : TIDENT { semantic(95); }
             | '(' expression ')' { semantic(97); };
 
 %%
-void yyerror(const char *s)  // yyerror 함수 정의 수정
-{
-    printf("%s\n", s);
+void yyerror(const char *s) {
+    fprintf(stderr, "%s at line %d\n", s, yylineno);
 }
+
 void semantic(int n)
 {
     printf("reduced rule number = %d\n", n);

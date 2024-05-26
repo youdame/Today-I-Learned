@@ -2,9 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "tn.h" // bison에서 생성된 헤더 파일 포함
+
+
 #define YY_DECL int yylex(void) // yylex 함수 선언 추가
 %}
 
+%option yylineno  
+%option reentrant
 letter	[a-zA-Z_]
 digit	[0-9]
 

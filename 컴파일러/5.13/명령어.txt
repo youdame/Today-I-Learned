@@ -1,0 +1,4 @@
+flex scanner.l                
+bison -d parser.y             
+gcc parser.tab.c lex.yy.c tn.h
+./a.out < prime.mc  
