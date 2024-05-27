@@ -64,8 +64,8 @@ statement					: compound_st								{ semantic(41); }
 expression_st	    		: opt_expression ';'						{ semantic(46); };
 opt_expression	        	: expression								{ semantic(47); }
 							|											{ semantic(48); };
-if_st						: TIF '(' expression ')' statement %prec LOWER_THAN_ELSE			        { semantic(49); }
-							| TIF '(' expression ')' statement TELSE statement							{ semantic(50); };
+if_st						: TIF '(' expression ')' statement %prec LOWER_THAN_ELSE TEIF			        { semantic(49); }
+							| TIF '(' expression ')' statement TELSE statement TEIF						{ semantic(50); };
 while_st		    		: TWHILE '(' expression ')' statement		{ semantic(51); };
 return_st					: TRETURN opt_expression ';'				{ semantic(52); };
 expression			    	: assignment_exp							{ semantic(53); };
@@ -134,4 +134,3 @@ int main()
 	printf("end of parser\n");
 	return 0;
 }
-
