@@ -44,32 +44,25 @@
      TCONST = 260,
      TELSE = 261,
      TIF = 262,
-     TINT = 263,
-     TRETURN = 264,
-     TVOID = 265,
-     TWHILE = 266,
-     TADD_ASSIGN = 267,
-     TSUB_ASSIGN = 268,
-     TMUL_ASSIGN = 269,
-     TDIV_ASSIGN = 270,
-     TMOD_ASSIGN = 271,
-     TOR = 272,
-     TAND = 273,
-     TEQUAL = 274,
-     TNOTEQUAL = 275,
-     TGREATE = 276,
-     TLESSE = 277,
-     TINC = 278,
-     TDEC = 279,
-     TBEGIN = 280,
-     TEND = 281,
-     TASSIGN = 282,
-     TADD = 283,
-     TNUM = 284,
-     TSEMI = 285,
-     TDOT = 286,
-     TERROR = 287,
-     LOWER_THAN_ELSE = 288
+     TEIF = 263,
+     TINT = 264,
+     TRETURN = 265,
+     TVOID = 266,
+     TWHILE = 267,
+     TADDASSIGN = 268,
+     TSUBASSIGN = 269,
+     TMULASSIGN = 270,
+     TDIVASSIGN = 271,
+     TMODASSIGN = 272,
+     TOR = 273,
+     TAND = 274,
+     TEQUAL = 275,
+     TNOTEQU = 276,
+     TGREATE = 277,
+     TLESSE = 278,
+     TINC = 279,
+     TDEC = 280,
+     LOWER_THAN_ELSE = 281
    };
 #endif
 /* Tokens.  */
@@ -78,32 +71,25 @@
 #define TCONST 260
 #define TELSE 261
 #define TIF 262
-#define TINT 263
-#define TRETURN 264
-#define TVOID 265
-#define TWHILE 266
-#define TADD_ASSIGN 267
-#define TSUB_ASSIGN 268
-#define TMUL_ASSIGN 269
-#define TDIV_ASSIGN 270
-#define TMOD_ASSIGN 271
-#define TOR 272
-#define TAND 273
-#define TEQUAL 274
-#define TNOTEQUAL 275
-#define TGREATE 276
-#define TLESSE 277
-#define TINC 278
-#define TDEC 279
-#define TBEGIN 280
-#define TEND 281
-#define TASSIGN 282
-#define TADD 283
-#define TNUM 284
-#define TSEMI 285
-#define TDOT 286
-#define TERROR 287
-#define LOWER_THAN_ELSE 288
+#define TEIF 263
+#define TINT 264
+#define TRETURN 265
+#define TVOID 266
+#define TWHILE 267
+#define TADDASSIGN 268
+#define TSUBASSIGN 269
+#define TMULASSIGN 270
+#define TDIVASSIGN 271
+#define TMODASSIGN 272
+#define TOR 273
+#define TAND 274
+#define TEQUAL 275
+#define TNOTEQU 276
+#define TGREATE 277
+#define TLESSE 278
+#define TINC 279
+#define TDEC 280
+#define LOWER_THAN_ELSE 281
 
 
 

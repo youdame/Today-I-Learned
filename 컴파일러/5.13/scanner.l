@@ -1,31 +1,37 @@
 %{
-#include <stdio.h>
-#include <stdlib.h>
-#include "tn.h" // bison에서 생성된 헤더 파일 포함
-
-
-#define YY_DECL int yylex(void) // yylex 함수 선언 추가
+#include "tn.h"
 %}
 
-%option yylineno  
-%option reentrant
-letter	[a-zA-Z_]
-digit	[0-9]
-
 %%
-begin				return(TBEGIN);
-end					return(TEND);
-{letter}({letter}|{digit})*	return(TIDENT);
-":="				return(TASSIGN);
-"+"				return(TADD);
-{digit}+			return(TNUM);
-";"				return(TSEMI);
-\.				return(TDOT);
-[ \t\n]				;
-.				return(TERROR);
+"const"		return(TCONST);
+"else"		return(TELSE);
+"if"		return(TIF);
+"endif"		return(TEIF);  // Assuming TEIF is defined in tn.h
+"int"		return(TINT);
+"return"	return(TRETURN);
+"void"		return(TVOID);
+"while"		return(TWHILE);
+"=="		return(TEQUAL);
+"!="		return(TNOTEQU);
+"<="		return(TLESSE);
+">="		return(TGREATE);
+"&&"		return(TAND);
+"||"		return(TOR);
+"++"		return(TINC);
+"--"		return(TDEC);
+"+="		return(TADDASSIGN);
+"-="		return(TSUBASSIGN);
+"*="		return(TMULASSIGN);
+"/="		return(TDIVASSIGN);
+"%="		return(TMODASSIGN);
+[A-Za-z_][A-Za-z0-9_]*		return(TIDENT);
+[1-9][0-9]*|0([0-7]+|(x|X)[0-9A-Fa-f]*)?	return(TNUMBER);
+"/*"([^*]|\*+[^*/])*\**"*"	;
+"//".*	;
+[ \t\n] ;
+.	return(yytext[0]);
 %%
 
-int yywrap()
-{
-    return 1;
+int yywrap() {
+	return 1;
 }
